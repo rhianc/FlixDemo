@@ -13,9 +13,9 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var backdrop: UIImageView!
     @IBOutlet weak var poster: UIImageView!
-    @IBOutlet weak var detailTitle: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var overview: UILabel!
+    @IBOutlet weak var movieTitle: UILabel!
     
     var movie: [String: Any]?
     
@@ -24,7 +24,8 @@ class DetailViewController: UIViewController {
         let imageStarter = "https://image.tmdb.org/t/p/w500"
 
         if let movie = movie {
-            detailTitle.text = movie["title"] as? String
+            print(movie)
+            movieTitle.text = movie["title"] as? String
             releaseDate.text = movie["release_date"] as? String
             overview.text = movie["overview"] as? String
             let backdropPath = movie["backdrop_path"] as! String

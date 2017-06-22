@@ -123,7 +123,6 @@
                         <outlet property="overview" destination="dWc-GX-d9l" id="YZ1-Xb-JYi"/>
                         <outlet property="poster" destination="LqQ-pV-hJ6" id="grU-3d-zuF"/>
                         <outlet property="releaseDate" destination="rRd-uw-YLh" id="F2e-7a-hNx"/>
-                        <outlet property="title" destination="mKp-AL-ane" id="Xmv-po-SsT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aph-1N-qJC" userLabel="First Responder" sceneMemberID="firstResponder"/>

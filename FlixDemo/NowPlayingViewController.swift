@@ -25,7 +25,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                 //print(error.localizedDescription)
             } else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                print(dataDictionary)
+                //print(dataDictionary)
                 let movies = dataDictionary["results"] as! [[String: Any]]
                 self.movies = movies
                 self.tableView.reloadData()
@@ -71,5 +71,14 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         cell.Description.text = overview
         cell.ImageSquare.af_setImage(withURL: url)
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell){
+            let movie = movies[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.movie = movie
+        }
     }
 }

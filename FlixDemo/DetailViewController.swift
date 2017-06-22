@@ -7,35 +7,38 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var backdrop: UIImageView!
     @IBOutlet weak var poster: UIImageView!
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var detailTitle: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var overview: UILabel!
     
+    var movie: [String: Any]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let imageStarter = "https://image.tmdb.org/t/p/w500"
 
-        // Do any additional setup after loading the view.
+        if let movie = movie {
+            detailTitle.text = movie["title"] as? String
+            releaseDate.text = movie["release_date"] as? String
+            overview.text = movie["overview"] as? String
+            let backdropPath = movie["backdrop_path"] as! String
+            let coverPath = movie["poster_path"] as! String
+            let backURL = URL(string: imageStarter + backdropPath)!
+            let coverURL = URL(string: imageStarter + coverPath)!
+            backdrop.af_setImage(withURL: backURL)
+            poster.af_setImage(withURL: coverURL)
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

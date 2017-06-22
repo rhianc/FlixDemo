@@ -13,14 +13,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     var movies: [[String: Any]] = []
+    var refreshControl: UIRefreshControl!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.dataSource = self
-        
-        
+    func fetchMovies(){
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=bce579dfade4b99c8c9e13bff0c532f4")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
@@ -34,9 +29,24 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                 let movies = dataDictionary["results"] as! [[String: Any]]
                 self.movies = movies
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
         task.resume()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.dataSource = self
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        fetchMovies()
+    }
+    
+    func didPullToRefresh(_ refreshControl: UIRefreshControl){
+        fetchMovies()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +64,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
         let imagePath = movie["poster_path"] as! String
-        let begining: String = "https://image.tmdb.org/t/p/w50"
+        let begining: String = "https://image.tmdb.org/t/p/w500"
         
         let url = URL(string: begining + imagePath)!
         cell.Title.text = title

@@ -15,6 +15,7 @@
 		093DB0341EFB156D0002A959 /* FlixDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DB0331EFB156D0002A959 /* FlixDemoUITests.swift */; };
 		093DB0421EFB23040002A959 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DB0411EFB23040002A959 /* NowPlayingViewController.swift */; };
 		093DB0441EFB331A0002A959 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DB0431EFB331A0002A959 /* MovieCell.swift */; };
+		093DB0461EFB41C50002A959 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093DB0451EFB41C50002A959 /* DetailViewController.swift */; };
 		87BA28A7ACFF94C19504F545 /* Pods_FlixDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB69EEC24D19E4BBFC6C5D6 /* Pods_FlixDemo.framework */; };
 		98C670F47EA7EAF2F23A3132 /* Pods_FlixDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C644CEB9C6CA60DDD1743BE /* Pods_FlixDemoTests.framework */; };
 		AFAB21339EFAA0C0E1B3C214 /* Pods_FlixDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2DB1E3B04F8A288C334933 /* Pods_FlixDemoUITests.framework */; };
@@ -52,6 +53,7 @@
 		093DB0351EFB156D0002A959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		093DB0411EFB23040002A959 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		093DB0431EFB331A0002A959 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		093DB0451EFB41C50002A959 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1BB69EEC24D19E4BBFC6C5D6 /* Pods_FlixDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlixDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2414CF348861211A2E4D9171 /* Pods-FlixDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlixDemoUITests/Pods-FlixDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2BB60D14447569364F95424E /* Pods-FlixDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlixDemoUITests/Pods-FlixDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				093DB01C1EFB156D0002A959 /* LaunchScreen.storyboard */,
 				093DB01F1EFB156D0002A959 /* Info.plist */,
 				093DB0431EFB331A0002A959 /* MovieCell.swift */,
+				093DB0451EFB41C50002A959 /* DetailViewController.swift */,
 			);
 			path = FlixDemo;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				093DB0421EFB23040002A959 /* NowPlayingViewController.swift in Sources */,
 				093DB0141EFB156D0002A959 /* AppDelegate.swift in Sources */,
 				093DB0441EFB331A0002A959 /* MovieCell.swift in Sources */,
+				093DB0461EFB41C50002A959 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +715,7 @@
 				093DB03A1EFB156D0002A959 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		093DB03B1EFB156D0002A959 /* Build configuration list for PBXNativeTarget "FlixDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -719,6 +724,7 @@
 				093DB03D1EFB156D0002A959 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		093DB03E1EFB156D0002A959 /* Build configuration list for PBXNativeTarget "FlixDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -727,6 +733,7 @@
 				093DB0401EFB156D0002A959 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

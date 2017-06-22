@@ -14,6 +14,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var movies: [[String: Any]] = []
     var refreshControl: UIRefreshControl!
+    var selected: IndexPath?
     
     func fetchMovies(){
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=bce579dfade4b99c8c9e13bff0c532f4")!
@@ -33,6 +34,11 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
             }
         }
         task.resume()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let path = selected{
+            tableView.deselectRow(at: selected!, animated: false)}
     }
     
     override func viewDidLoad() {
@@ -76,6 +82,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let cell = sender as! UITableViewCell
         if let indexPath = tableView.indexPath(for: cell){
+            selected = indexPath
             let movie = movies[indexPath.row]
             let detailViewController = segue.destination as! DetailViewController
             detailViewController.movie = movie

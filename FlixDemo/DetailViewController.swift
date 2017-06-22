@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
         let imageStarter = "https://image.tmdb.org/t/p/w500"
 
         if let movie = movie {
-            print(movie)
+            //print(movie)
             movieTitle.text = movie["title"] as? String
             releaseDate.text = movie["release_date"] as? String
             overview.text = movie["overview"] as? String

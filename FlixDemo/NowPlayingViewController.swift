@@ -17,6 +17,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     var refreshControl: UIRefreshControl!
     var selected: IndexPath?
     
+    
     func errorAlert(){
         let alertController = UIAlertController(title: "Error", message: "No Network Connection", preferredStyle: .alert)
         // create an OK action
@@ -52,7 +53,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         if let path = selected{
-            tableView.deselectRow(at: selected!, animated: false)}
+            tableView.deselectRow(at: path, animated: false)}
     }
     
     override func viewDidLoad() {

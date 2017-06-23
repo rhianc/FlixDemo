@@ -16,6 +16,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var overview: UILabel!
     @IBOutlet weak var movieTitle: UILabel!
+    let format = DateFormatter()
+    let prettyformat = DateFormatter()
     
     var movie: [String: Any]?
     
@@ -26,7 +28,11 @@ class DetailViewController: UIViewController {
         if let movie = movie {
             //print(movie)
             movieTitle.text = movie["title"] as? String
-            releaseDate.text = movie["release_date"] as? String
+            let releaseDatePrimitive = movie["release_date"] as! String
+            format.dateFormat = "yyyy-MM-dd"
+            let finalDate = format.date(from: releaseDatePrimitive)
+            prettyformat.dateFormat = "MMM dd, yyyy"
+            releaseDate.text = prettyformat.string(from: finalDate!)
             overview.text = movie["overview"] as? String
             let backdropPath = movie["backdrop_path"] as! String
             let coverPath = movie["poster_path"] as! String

@@ -17,6 +17,16 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     var refreshControl: UIRefreshControl!
     var selected: IndexPath?
     
+    func errorAlert(){
+        let alertController = UIAlertController(title: "Error", message: "No Network Connection", preferredStyle: .alert)
+        // create an OK action
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.fetchMovies()
+        }
+        alertController.addAction(OKAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     func fetchMovies(){
         activityIndicator.startAnimating()
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=bce579dfade4b99c8c9e13bff0c532f4")!
@@ -25,7 +35,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         let task = session.dataTask(with: request) {(data, response, error) in
             // This will run when the network request returns
             if let error = error {
-                //print(error.localizedDescription)
+                print(error.localizedDescription)
+                self.errorAlert()
             } else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 //print(dataDictionary)
@@ -37,7 +48,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
             }
         }
         task.resume()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -51,7 +51,7 @@ Describe any challenges encountered while building the app.
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
-- YouTube Helper Library (https://developers.google.com/youtube/v3/guides/ios_youtube_helper#adding_ytplayerview) - video player
+- [YouTube Helper Library](https://developers.google.com/youtube/v3/guides/ios_youtube_helper#adding_ytplayerview) - video player
 
 ## License
 

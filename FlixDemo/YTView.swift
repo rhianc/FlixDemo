@@ -14,26 +14,25 @@ class YTView: UIViewController, YTPlayerViewDelegate {
     @IBOutlet var videoPlayer: YTPlayerView!
     var url: URL?
     var videoJson: [[String: Any]] = []
-    var key: String?
+    var key: String = "none"
     
     override func viewDidLoad() {
         getVideo()
-        print(self.videoJson)
-        let first = self.videoJson[0] as [String: Any]
-        key = first["key"] as! String
-        videoPlayer.delegate = self
     }
     
     func playVideo(){
-        let videoID = "https://www.youtube.com/watch?v=\(key)"
-        videoPlayer.loadVideo(byURL: videoID, startSeconds: 0.0, suggestedQuality: .small)
+        //let videoID = "https://www.youtube.com/watch?v=\(key)"
+        //videoPlayer.loadVideo(byURL: videoID, startSeconds: 0.0, suggestedQuality: .small)
+        videoPlayer.delegate = self
+        videoPlayer.load(withVideoId: key)
         videoPlayer.playVideo()
     }
     
     func getVideo(){
-        let request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        //print(self.url)
+        let request = URLRequest(url: self.url!, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        print("got this far")
+        //print("got this far")
         let task = session.dataTask(with: request) {(data, response, error) in
             // This will run when the network request returns
             if let error = error {
@@ -49,10 +48,13 @@ class YTView: UIViewController, YTPlayerViewDelegate {
                 //self.tableView.reloadData()
                 //self.refreshControl.endRefreshing()
                 //self.activityIndicator.stopAnimating()
+                let first = self.videoJson[0] as [String: Any]
+                self.key = first["key"] as! String
+                //print(self.videoJson)
                 self.playVideo()
             }
         }
         task.resume()
-        print("did this too")
+        //print("did this too")
     }
 }

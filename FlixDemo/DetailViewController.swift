@@ -18,10 +18,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var movieTitle: UILabel!
     let format = DateFormatter()
     let prettyformat = DateFormatter()
-    
     var movie: [String: Any]?
     
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         let imageStarter = "https://image.tmdb.org/t/p/w500"
 
@@ -47,5 +48,20 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func move(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "mover", sender: self)
+    }
+    
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let movieIDnum = movie?["id"] as! Int
+        let movieID = String(movieIDnum)
+        //print(movieID)
+        let st = "https://api.themoviedb.org/3/movie/\(movieID)/videos?api_key=bce579dfade4b99c8c9e13bff0c532f4&language=en-US"
+        //print(st)
+        let url = URL(string: st)!
+        let next = segue.destination as! YTView
+        next.url = url
+    }
 }

@@ -7,6 +7,7 @@ target 'FlixDemo' do
 
   # Pods for FlixDemo
   pod 'AlamofireImage', '~> 3.1'
+  pod "youtube-ios-player-helper", "~> 0.1.6"
 
   target 'FlixDemoTests' do
     inherit! :search_paths

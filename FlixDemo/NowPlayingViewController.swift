@@ -101,6 +101,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
             let movie = movies[indexPath.row]
             let detailViewController = segue.destination as! DetailViewController
             detailViewController.movie = movie
+            //detailViewController.jsonData = movie
         }
     }
 }

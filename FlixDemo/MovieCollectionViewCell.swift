@@ -10,4 +10,9 @@ import UIKit
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var CoverImage: UIImageView!
+    
+//    func viewWillAppear(){
+//        
+//    }
 }
